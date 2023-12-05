@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  doctor: one
+  patient: one
+  date: 2023-12-05
+  time: 2023-12-05 19:51:59
+  price: 9.99
+
+two:
+  doctor: two
+  patient: two
+  date: 2023-12-05
+  time: 2023-12-05 19:51:59
+  price: 9.99
