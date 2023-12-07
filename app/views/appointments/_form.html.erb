@@ -7,7 +7,7 @@
   <%= form.label :date, 'Date' %>
   <%= form.date_field :date %>
 
-  <%= form.label :time, 'Hour' %>
+<%= label_tag 'appointment_time_1i', 'Hour' %>
   <%= form.time_select :time, start_hour: 8, end_hour: 16, minute_step: 20 %>
 
   <%= form.label :price, 'Price (PLN)' %>

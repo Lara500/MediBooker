@@ -1,5 +1,7 @@
 <h1>Lista Pacjentów</h1>
 
+<%== pagy_nav(@pagy) %>
+
 <table>
   <thead>
     <tr>
@@ -9,7 +11,7 @@
       <th>city</th>
       <th>birth date</th>
       <th>gender</th>
-      <th>action</th>
+      <th>Zarezerwowane Wizyty</th>
     </tr>
   </thead>
   <tbody>
@@ -22,7 +24,10 @@
         <td><%= patient.birth_date %></td>
         <td><%= patient.gender %></td>
         <td><%= link_to 'Add appoitment', new_appointment_path(patient_id: patient.id) %></td>
+        <td><%= link_to patient.appointments.count, patient_appointments_path(patient) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%== pagy_nav(@pagy) %>

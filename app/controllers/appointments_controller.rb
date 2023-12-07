@@ -3,6 +3,10 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(patient_id: params[:patient_id])
   end
 
+  def index
+    @appointments = Appointment.includes(:doctor, :patient).all
+  end
+
   def create
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
