@@ -1,0 +1,28 @@
+<h1>Lista Pacjentów</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>last name</th>
+      <th>pesel</th>
+      <th>city</th>
+      <th>birth date</th>
+      <th>gender</th>
+      <th>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @patients.each do |patient| %>
+      <tr>
+        <td><%= patient.first_name %></td>
+        <td><%= patient.last_name %></td>
+        <td><%= patient.pesel %></td>
+        <td><%= patient.city %></td>
+        <td><%= patient.birth_date %></td>
+        <td><%= patient.gender %></td>
+        <td><%= link_to 'Add appoitment', new_appointment_path(patient_id: patient.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

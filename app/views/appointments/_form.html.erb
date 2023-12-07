@@ -1,0 +1,17 @@
+<%= form_with(model: @appointment, local: true) do |form| %>
+  <%= form.hidden_field :patient_id %>
+
+  <%= form.label :doctor_id, 'Doctor' %>
+  <%= form.collection_select :doctor_id, Doctor.all, :id, :full_name %>
+
+  <%= form.label :date, 'Date' %>
+  <%= form.date_field :date %>
+
+  <%= form.label :time, 'Hour' %>
+  <%= form.time_select :time, start_hour: 8, end_hour: 16, minute_step: 20 %>
+
+  <%= form.label :price, 'Price (PLN)' %>
+  <%= form.number_field :price %>
+
+  <%= form.submit 'Book appoitment' %>
+<% end %>
