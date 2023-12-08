@@ -16,6 +16,11 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def patient_appointments
+    @patient = Patient.find(params[:patient_id])
+    @appointments = Appointment.where(patient_id: @patient.id)
+  end
+
   private
 
   def appointment_params

@@ -1,0 +1,22 @@
+<h2>Wizyty pacjenta: <%= @patient.first_name.capitalize.titleize %> <%= @patient.last_name.capitalize.titleize %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lekarz</th>
+      <th>Pacjent</th>
+      <th>Cena</th>
+      <th>Data i godzina</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.doctor.first_name.capitalize.titleize %> <%= appointment.doctor.last_name.capitalize.titleize %></td>
+        <td><%= appointment.patient.first_name.capitalize.titleize %> <%= appointment.patient.last_name.capitalize.titleize %></td>
+        <td><%= number_to_currency(appointment.price, unit: 'PLN', format: "%n %u") %></td>
+        <td><%= appointment.date %> <%= appointment.time.strftime("%H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

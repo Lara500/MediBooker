@@ -1,15 +1,26 @@
 <h1>Lista Pacjentów</h1>
 
+<%= search_form_for @q do |f| %>
+  <%= f.label :last_name_cont, "Nazwisko" %>
+  <%= f.search_field :last_name_cont %>
+
+  <%= f.label :gender_eq, "Płeć" %>
+  <%= f.select :gender_eq, Patient.genders.keys.map { |gender| [gender.titleize, gender] }, include_blank: true %>
+
+  <%= f.submit "Szukaj" %>
+  <%= link_to 'Wyczyść', patients_path, class: 'btn' %>
+<% end %>
+
 <%== pagy_nav(@pagy) %>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>last name</th>
+      <th><%= sort_link(@q, :last_name, 'Nazwisko') %></th>
       <th>pesel</th>
       <th>city</th>
-      <th>birth date</th>
+      <th><%= sort_link(@q, :birth_date, 'Data Urodzenia') %></th>
       <th>gender</th>
       <th>Zarezerwowane Wizyty</th>
     </tr>
@@ -17,14 +28,14 @@
   <tbody>
     <% @patients.each do |patient| %>
       <tr>
-        <td><%= patient.first_name %></td>
-        <td><%= patient.last_name %></td>
+        <td><%= patient.first_name.capitalize.titleize %></td>
+        <td><%= patient.last_name.capitalize.titleize %></td>
         <td><%= patient.pesel %></td>
-        <td><%= patient.city %></td>
+        <td><%= patient.city.capitalize.titleize %></td>
         <td><%= patient.birth_date %></td>
         <td><%= patient.gender %></td>
         <td><%= link_to 'Add appoitment', new_appointment_path(patient_id: patient.id) %></td>
-        <td><%= link_to patient.appointments.count, patient_appointments_path(patient) %></td>
+        <td><%= link_to patient.appointments.count, patient_appointments_path(patient_id: patient.id) %></td>
       </tr>
     <% end %>
   </tbody>
