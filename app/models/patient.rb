@@ -4,7 +4,7 @@ class Patient < ApplicationRecord
 
     validates :first_name, :last_name, :pesel, :city, :birth_date, :gender, presence: true
 
-    enum gender: { male: 'M', female: 'K', other: 'other' }
+    enum gender: { Mężczyzna: 'M', Kobieta: 'K', other: 'other' }
     
     def self.ransackable_attributes(auth_object = nil)
         %w[gender last_name birth_date]

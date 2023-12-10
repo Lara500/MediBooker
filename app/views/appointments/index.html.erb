@@ -1,18 +1,31 @@
-<table>
-  <thead>
-    <tr>
-      <th>Lekarz</th>
-      <th>Pacjent</th>
-      <th>Cena</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment.doctor.first_name %> <%= appointment.doctor.last_name %></td>
-        <td><%= appointment.patient.first_name %> <%= appointment.patient.last_name %></td>
-        <td><%= number_to_currency(appointment.price, unit: 'PLN', format: "%n %u") %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container py-4">
+  <div class="p-4 mb-4 bg-light rounded-3">
+    <h1>Lista wizyt</h1>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Lekarz</th>
+            <th>Pacjent</th>
+            <th>Cena</th>
+            <th>Zarządzaj</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @appointments.each do |appointment| %>
+            <tr>
+              <td><%= appointment.doctor.first_name %> <%= appointment.doctor.last_name %></td>
+              <td><%= appointment.patient.first_name.capitalize.titleize %> <%= appointment.patient.last_name.capitalize.titleize %></td>
+              <td><%= number_to_currency(appointment.price, unit: 'PLN', format: "%n %u") %></td>
+              <td><%= link_to 'Edytuj wizytę', edit_appointment_path(id: appointment.id), class: 'btn btn-info btn-sm' %>
+                  <%= button_to 'Usuń wizytę', appointment, method: :delete, data: { confirm: "Czy jesteś pewny?" }, class: "btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <p class="mb-1">&copy; Sonia Leszkiewicz 2023</p>
+</footer>
+

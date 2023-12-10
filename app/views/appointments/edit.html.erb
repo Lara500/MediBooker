@@ -1,2 +1,12 @@
-<h1>Appointments#edit</h1>
-<p>Find me in app/views/appointments/edit.html.erb</p>
+<div class="container py-4">
+  <div class="p-4 mb-4 bg-light rounded-3">
+    <h1>Edytuj wizytę</h1>
+    <%= render 'form', appointment: @appointment %>
+        <%# <%= link_to 'Powrót do Listy', books_path %>
+  </div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <p class="mb-1">&copy; Sonia Leszkiewicz 2023</p>
+</footer>
+

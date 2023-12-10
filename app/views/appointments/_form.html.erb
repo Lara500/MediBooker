@@ -1,17 +1,29 @@
 <%= form_with(model: @appointment, local: true) do |form| %>
   <%= form.hidden_field :patient_id %>
 
-  <%= form.label :doctor_id, 'Doctor' %>
-  <%= form.collection_select :doctor_id, Doctor.all, :id, :full_name %>
+  <div class="mb-3">
+    <%= form.label :doctor_id, 'Lekarz', class: 'form-label'  %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, :full_name, {}, { class: 'form-select' } %>
+  </div>
 
-  <%= form.label :date, 'Date' %>
-  <%= form.date_field :date %>
+  <div class="mb-3">
+    <%= form.label :date, 'Data', class: 'form-label'  %>
+    <%= form.date_field :date, class: 'form-select' %>
+  </div>
 
-<%= label_tag 'appointment_time_1i', 'Hour' %>
-  <%= form.time_select :time, start_hour: 8, end_hour: 16, minute_step: 20 %>
+  <div class="mb-3">
+    <%= label_tag 'appointment_time_1i', 'Godzina', class: 'form-label'  %>
+    <div class="select-time-block">
+      <%= form.time_select :time, start_hour: 8, end_hour: 16, minute_step: 20 %>
+    </div>
+  </div>
 
-  <%= form.label :price, 'Price (PLN)' %>
-  <%= form.number_field :price %>
+  <div class="mb-3">
+    <%= form.label :price, 'Cena (PLN)', class: 'form-label'  %>
+    <%= form.number_field :price, class: 'form-control'%>
+  </div>
 
-  <%= form.submit 'Book appoitment' %>
+  <div class="actions">
+    <%= form.submit 'Zapisz', class: 'btn btn-primary' %>
+  </div>
 <% end %>

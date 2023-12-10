@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+ .select-time-block .form-select {
+    display: inline-block;
+    width: auto;
+  }

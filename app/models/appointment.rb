@@ -6,8 +6,12 @@ class Appointment < ApplicationRecord
   validate :validate_unique_appointment
 
   def validate_unique_appointment
-    if Appointment.exists?(doctor_id: doctor_id, date: date, time: time)
-      errors.add(:base, 'This date is already booked.')
+    return if self.persisted? && !doctor_id_changed? && !date_changed? && !time_changed?
+  
+    if Appointment.where(doctor_id: doctor_id, date: date, time: time)
+                  .where.not(id: id).exists?
+      errors.add(:base, 'Ta data jest zajęta.')
     end
   end
+  
 end

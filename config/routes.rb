@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :appointments, except: [:destroy]
+  resources :appointments
   resources :doctors, only: [:index, :show, :new, :create]
   resources :patients, only: [:index, :show, :new, :create] 
   get 'appointments/patient/:patient_id', to: 'appointments#patient_appointments', as: 'patient_appointments'
@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "patients#index"
 end
