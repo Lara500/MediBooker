@@ -1,6 +1,6 @@
 <div class="container py-4">
   <div class="p-4 mb-4 bg-light rounded-3">
-    <h1>Dodaj wizytę</h1>
+    <h1>Dodaj wizytę: <%= @appointment.patient.first_name.capitalize.titleize %> <%= @appointment.patient.last_name.capitalize.titleize %></h1>
     <%= render 'form', appointment: @appointment %>
         <%# <%= link_to 'Powrót do Listy', books_path %>
   </div>

@@ -1,4 +1,14 @@
 <%= form_with(model: @appointment, local: true) do |form| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
   <%= form.hidden_field :patient_id %>
 
   <div class="mb-3">

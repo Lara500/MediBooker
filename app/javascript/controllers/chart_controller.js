@@ -13,7 +13,7 @@ export default class extends Controller {
       data: {
         labels: Object.keys(this.dataValue),
         datasets: [{
-          label: 'Number of births: ',
+          label: 'Liczba urodzeń ',
           data: Object.values(this.dataValue),
           backgroundColor: 'rgba(0, 123, 255, 0.5)'
         }]

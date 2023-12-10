@@ -16,8 +16,12 @@
               <td><%= appointment.doctor.first_name %> <%= appointment.doctor.last_name %></td>
               <td><%= appointment.patient.first_name.capitalize.titleize %> <%= appointment.patient.last_name.capitalize.titleize %></td>
               <td><%= number_to_currency(appointment.price, unit: 'PLN', format: "%n %u") %></td>
-              <td><%= link_to 'Edytuj wizytę', edit_appointment_path(id: appointment.id), class: 'btn btn-info btn-sm' %>
-                  <%= button_to 'Usuń wizytę', appointment, method: :delete, data: { confirm: "Czy jesteś pewny?" }, class: "btn btn-danger" %></td>
+              <td>  
+                <div class="d-flex align-items-center">
+                   <%= link_to 'Edytuj wizytę', edit_appointment_path(id: appointment.id), class: 'btn btn-info btn-sm me-2' %>
+                   <%= button_to 'Usuń wizytę', appointment, method: :delete, data: { confirm: "Czy jesteś pewny?" }, class: "btn btn-danger btn-sm" %>
+                </div>
+              </td>
             </tr>
           <% end %>
         </tbody>

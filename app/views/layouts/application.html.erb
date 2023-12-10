@@ -11,6 +11,24 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-expand-lg bg-blue">
+    <div class="container-fluid">
+          <a class="navbar-brand navbar-brand-custom " href="<%= root_path %>">MediBooker</a>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item me-2">
+                <%= button_to 'Lista pacjentów', patients_path, method: :get, class: 'btn btn-accent2' %>
+              </li>
+              <li class="nav-item me-2">
+                <%= button_to 'Lista wizyt', appointments_path, method: :get, class: 'btn btn-accent2' %>
+              </li>
+              <li class="nav-item">
+                <%= button_to 'Statystyka urodzeń', statistics_path, method: :get, class: 'btn btn-accent2' %>
+              </li>
+            </ul>
+          </div>
+    </div>
+  </nav>
     <%= yield %>
   </body>
 </html>

@@ -10,7 +10,7 @@ class Appointment < ApplicationRecord
   
     if Appointment.where(doctor_id: doctor_id, date: date, time: time)
                   .where.not(id: id).exists?
-      errors.add(:base, 'Ta data jest zajęta.')
+      errors.add(:base, 'Ten termin jest zajęty.')
     end
   end
   
