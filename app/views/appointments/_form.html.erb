@@ -1,0 +1,39 @@
+<%= form_with(model: @appointment, local: true) do |form| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= form.hidden_field :patient_id %>
+
+  <div class="mb-3">
+    <%= form.label :doctor_id, 'Lekarz', class: 'form-label'  %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, :full_name, {}, { class: 'form-select' } %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :date, 'Data', class: 'form-label'  %>
+    <%= form.date_field :date, class: 'form-select' %>
+  </div>
+
+  <div class="mb-3">
+    <%= label_tag 'appointment_time_1i', 'Godzina', class: 'form-label'  %>
+    <div class="select-time-block">
+      <%= form.time_select :time, start_hour: 8, end_hour: 16, minute_step: 20 %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :price, 'Cena (PLN)', class: 'form-label'  %>
+    <%= form.number_field :price, class: 'form-control'%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Zapisz', class: 'btn btn-primary' %>
+  </div>
+<% end %>

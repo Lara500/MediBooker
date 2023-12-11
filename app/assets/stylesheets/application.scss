@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+ .select-time-block .form-select {
+    display: inline-block;
+    width: auto;
+  }
+
+  .bg-blue {
+    color: #FFFFFF;
+    background-color: #1e86dc;
+    
+  }
+
+  .navbar-brand-custom {
+    color: #FFFFFF;
+    font-size: 1,75em !important;
+  }
+
+  .btn-accent2 {
+    color: #FFFFFF !important;
+    background-color: #3255c6 !important;
+  }
+
+
+  #error_explanation {
+    color: red;
+    font-size: larger;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  #error_explanation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }

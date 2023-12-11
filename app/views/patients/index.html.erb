@@ -1,0 +1,61 @@
+<div class="container py-4">
+  <div class="p-4 mb-4 bg-light rounded-3">
+    <h1>Lista pacjentów</h1>
+
+      <div class="form-row">
+      <%= search_form_for @q, class: 'row g-4 mb-4' do |f| %>
+
+        <div class="col-md-4">
+          <%= f.label :last_name_cont, "Nazwisko", class: 'mr-5' %>
+          <%= f.search_field :last_name_cont, class: 'form-control' %>
+        </div>
+        <div class="col-md-4">
+            <%= f.label :gender_eq, "Płeć", class: 'mr-5' %>
+            <%= f.select :gender_eq, Patient.genders.keys.map { |gender| [gender.titleize, gender] }, { include_blank: true }, { class: 'form-select' } %>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+            <%= f.submit "Szukaj", class: 'btn btn-primary' %>
+            <%= link_to 'Wyczyść', patients_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+
+      <% end %>
+
+      <%== pagy_bootstrap_nav(@pagy) %>
+
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Imię</th>
+            <th><%= sort_link(@q, :last_name, 'Nazwisko') %></th>
+            <th>PESEL</th>
+            <th>Miasto</th>
+            <th><%= sort_link(@q, :birth_date, 'Data urodzenia') %></th>
+            <th>Płeć</th>
+            <th>Umów</th>
+            <th>Zarezerwowane wizyty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @patients.each do |patient| %>
+            <tr>
+              <td><%= patient.first_name.capitalize.titleize %></td>
+              <td><%= patient.last_name.capitalize.titleize %></td>
+              <td><%= patient.pesel %></td>
+              <td><%= patient.city.capitalize.titleize %></td>
+              <td><%= patient.birth_date %></td>
+              <td><%= patient.gender %></td>
+              <td><%= link_to 'Dodaj wizytę', new_appointment_path(patient_id: patient.id), class: 'btn btn-info btn-sm' %></td>
+              <td><%= link_to patient.appointments.count, patient_appointments_path(patient_id: patient.id), class: 'btn btn-sm btn-outline-primary' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <p class="mb-1">&copy; Sonia Leszkiewicz 2023</p>
+</footer>
