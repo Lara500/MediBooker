@@ -6,7 +6,6 @@ export default class extends Controller {
   static values = { data: Object }
 
   connect() {
-    console.log(this.dataValue);
     const ctx = this.element.getContext('2d');
     new Chart(ctx, {
       type: 'bar',

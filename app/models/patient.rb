@@ -8,5 +8,5 @@ class Patient < ApplicationRecord
     
     def self.ransackable_attributes(auth_object = nil)
         %w[gender last_name birth_date]
-      end
+    end
 end

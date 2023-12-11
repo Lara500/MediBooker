@@ -4,9 +4,6 @@ class PatientsController < ApplicationController
     @pagy, @patients = pagy(@q.result(distinct: true), items: 50)
   end
 
-  def show
-  end
-
   def new
   end
 

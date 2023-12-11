@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  
   def new
     @appointment = Appointment.new(patient_id: params[:patient_id])
   end

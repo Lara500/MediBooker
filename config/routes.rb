@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'appointments/patient/:patient_id', to: 'appointments#patient_appointments', as: 'patient_appointments'
   get 'statistics', to: 'statistics#index'
 
-
   # Defines the root path route ("/")
   root "patients#index"
 end
