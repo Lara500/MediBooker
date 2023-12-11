@@ -9,12 +9,17 @@ MediBooker to aplikacja webowa stworzona do zarządzania rezerwacjami wizyt medy
 **Funkcjonalności**
 
 Przeglądanie listy pacjentów
+
 Rezerwacja wizyt
+
 Przeglądanie i edycja zaplanowanych wizyt
+
 Wyświetlanie statystyk urodzeń
 
 **Technologie**
 
 Ruby on Rails
+
 Bootstrap
+
 PostgreSQL
